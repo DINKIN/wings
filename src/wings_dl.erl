@@ -220,9 +220,10 @@ draw(Category, Key, Update, RS)
 %%%
 
 delete_dlists() ->
-    case erase(wings_wm:get_dd()) of
+    case wings_wm:get_dl_data() of
 	#du{used=Used} ->
 	    delete_buffers(Used, ?FUNCTION_NAME),
+            erase(wings_wm:get_dd()),
 	    gl:getError();			%Clear error.
 	_ ->
 	    ok
